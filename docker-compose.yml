@@ -17,6 +17,6 @@ services:
     ports:
       - 3000:3000
     environment:
-      DATABASE_URL: "postgresql://postgres:example_password@postgres:5432/gms_dev?schema=public"
-      ORIGIN: "http://localhost:3000"
+      DATABASE_URL: 'postgresql://postgres:example_password@postgres:5432/gms_dev?schema=public'
+      ORIGIN: 'http://localhost:3000'
     command: npm run docker:start
