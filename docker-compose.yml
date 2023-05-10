@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: example_password
+  gms:
+    image: node:18-alpine
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - 3000:3000
+    environment:
+      DATABASE_URL: "postgresql://postgres:example_password@postgres:5432/gms_dev?schema=public"
+      ORIGIN: "http://localhost:3000"
+    command: npm run docker:start
