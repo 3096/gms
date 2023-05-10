@@ -35,6 +35,7 @@
   },
   "type": "module",
   "dependencies": {
-    "postgres": "^3.3.4"
+    "postgres": "^3.3.4",
+    "zod": "^3.21.4"
   }
 }
