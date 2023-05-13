@@ -50,37 +50,37 @@
     <span class="label-text transition duration-200 ease-in-out" class:text-red-500={showError}>
       {label}
     </span>
-  </label>
 
-  <div class:input-group={$$slots.prepend || $$slots.append}>
-    <slot name="prepend" />
-    {#if elementType === 'select'}
-      <select
-        {name}
-        class={($$restProps.class ?? 'w-full transition duration-200 ease-in-out') +
-          ' select select-bordered'}
-        class:select-error={showError}
-        {...$$restProps}
-        bind:value
-        on:input={onInput}
-        on:blur={onBlur}
-      >
-        <slot />
-      </select>
-    {:else if elementType === 'input'}
-      <input
-        {name}
-        class={($$restProps.class ?? 'w-full transition duration-200 ease-in-out') +
-          ' input input-bordered'}
-        class:input-error={showError}
-        {...$$restProps}
-        bind:value
-        on:input={onInput}
-        on:blur={onBlur}
-      />
-    {/if}
-    <slot name="append" />
-  </div>
+    <div class:input-group={$$slots.prepend || $$slots.append}>
+      <slot name="prepend" />
+      {#if elementType === 'select'}
+        <select
+          {name}
+          class={($$restProps.class ?? 'w-full transition duration-200 ease-in-out') +
+            ' select select-bordered'}
+          class:select-error={showError}
+          {...$$restProps}
+          bind:value
+          on:input={onInput}
+          on:blur={onBlur}
+        >
+          <slot />
+        </select>
+      {:else if elementType === 'input'}
+        <input
+          {name}
+          class={($$restProps.class ?? 'w-full transition duration-200 ease-in-out') +
+            ' input input-bordered'}
+          class:input-error={showError}
+          {...$$restProps}
+          bind:value
+          on:input={onInput}
+          on:blur={onBlur}
+        />
+      {/if}
+      <slot name="append" />
+    </div>
+  </label>
 
   {#if showError}
     <label class="label" for={name}>

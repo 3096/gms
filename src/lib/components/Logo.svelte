@@ -9,7 +9,7 @@
   xmlns:xlink="http://www.w3.org/1999/xlink"
   viewBox="0 0 2818 1030"
   xml:space="preserve"
-  class="h-12 pb-[-2]"
+  class="h-10"
 >
   <path
     fill={darkMode ? '#FFFFFF' : '#4C7280'}

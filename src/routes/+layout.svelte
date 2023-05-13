@@ -14,7 +14,7 @@
   <!-- <svelte:fragment slot="header">Header</svelte:fragment> -->
   <!-- <svelte:fragment slot="sidebarLeft">Sidebar Left</svelte:fragment> -->
   <!-- (sidebarRight) -->
-  <AppBar slot="pageHeader" gridColumns="1" class=" pb-[1.5]">
+  <AppBar slot="pageHeader" gridColumns="1">
     <div class="flex">
       <Logo />
     </div>

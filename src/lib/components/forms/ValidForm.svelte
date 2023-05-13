@@ -57,7 +57,7 @@
   <div {...$$restProps}>
     <slot />
     <button
-      class="btn btn-primary mt-6 transition duration-200 ease-in-out"
+      class="btn variant-filled-primary mt-6 mr-2 transition duration-200 ease-in-out"
       color="primary"
       type="submit"
       disabled={isLoading || !!formErrorMessages.length || hasInvalidFields}
