@@ -30,8 +30,8 @@
   };
 
   const dlc: TableSource = {
-    head: ['DLC'],
-    body: [['Expansion Pass']]
+    head: ['DLC', 'Description'],
+    body: [['Expansion Pass', 'The Xenoblade Chronicles 3 Expansion Pass includes access to multiple waves of DLC content.']]
   };
 </script>
 
