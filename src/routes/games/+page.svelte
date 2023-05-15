@@ -1,23 +1,25 @@
 <script lang="ts">
   import { focusTrap } from '@skeletonlabs/skeleton';
 
-  const gameSourceData = [
-    {
-      id: 1,
-      name: 'Xenoblade Chronicles 3',
-      release_date: '2022-07-29',
-      platform: 'Nintendo Switch',
-      genre: 'Action, JRPG'
-    },
-    {
-      id: 2,
-      name: 'Rocket League',
-      release_date: '2015-07-07',
-      platform: 'PC, PS4, Xbox One, Nintendo Switch',
-      genre: 'Sports, Driving'
-    }
-  ];
-
+    export let data;
+    
+    // const gameSourceData = [
+    // {
+    //   id: 1,
+    //   name: 'Xenoblade Chronicles 3',
+    //   release_date: '2022-07-29',
+    //   platform: 'Nintendo Switch',
+    //   genre: 'Action, JRPG'
+    // },
+    // {
+    //   id: 2,
+    //   name: 'Rocket League',
+    //   release_date: '2015-07-07',
+    //   platform: 'PC, PS4, Xbox One, Nintendo Switch',
+    //   genre: 'Sports, Driving'
+    // }
+  // ];
+  
   let isFocused: boolean = true;
 </script>
 
@@ -44,7 +46,7 @@
       </thead>
 
       <tbody>
-        {#each gameSourceData as game}
+        {#each data.gameSourceData as game}
           <tr>
             <td>{game.name}</td>
             <td>{game.release_date}</td>

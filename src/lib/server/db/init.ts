@@ -1,7 +1,7 @@
 import { dev } from '$app/environment';
 import pg, { PostgresError } from 'postgres';
 import { createUserTable } from './user';
-import { createGame, insertPublisher, queryGame } from './game';
+import { createGame, insertGame } from './game';
 import { createUserGameRelation } from './user_game';
 
 export const initDb = async () => {
