@@ -53,7 +53,7 @@
 
   <div class="px-8 pb-8">
     <div class="card p-8 justify-center">
-      <h1 class="h1 pb-8"><b>Description</b></h1>
+      <h1 class="h1 pb-8 text-primary-500"><b>Description</b></h1>
       <p>{game.description}</p>
     </div>
   </div>
