@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Table } from '@skeletonlabs/skeleton';
   import type { TableSource } from '@skeletonlabs/skeleton';
+  import Header from '$lib/components/headers/Header.svelte';
 
   const userName = 'dvd';
 
@@ -38,30 +39,15 @@
     </div>
   </div>
 
-  <hr class="!border-t-8" />
-  <div class="p-8">
-    <div class="card p-4">
-      <h3 class="h3 text-primary-500"><b>Overall Statistics</b></h3>
-    </div>
-  </div>
+  <Header text='Overall Statistics' />
   <div class="flex px-4 pb-8">
     <Table source={userTotalHoursPlayed} class="px-4" />
     <Table source={userTotalMoneySpent} class="px-4" />
   </div>
 
-  <hr class="!border-t-8" />
-  <div class="p-8">
-    <div class="card p-4">
-      <h3 class="h3 text-primary-500"><b>Favorites</b></h3>
-    </div>
-  </div>
+  <Header text='Favorites' />
   <Table source={userFavorites} class="px-8 pb-8" />
 
-  <hr class="!border-t-8" />
-  <div class="p-8">
-    <div class="card p-4">
-      <h3 class="h3 text-primary-500"><b>Reviews</b></h3>
-    </div>
-  </div>
+  <Header text='Reviews' />
   <Table source={userGameReviews} class="px-8 pb-8" />
 </div>
