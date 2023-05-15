@@ -2,7 +2,11 @@
   import { Table } from '@skeletonlabs/skeleton';
   import type { TableSource } from '@skeletonlabs/skeleton';
 
-  const userName = 'dvd';
+  export let data;
+
+  const user = data.userData;
+
+  const userName = user.username;
 
   const userTotalHoursPlayed: TableSource = {
     head: ['Total Hours Played'],

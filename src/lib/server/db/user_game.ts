@@ -79,16 +79,16 @@ const createFavoriteTable = async (sql: Sql) => {
 
 
 // QUERY
-export const queryFavorite = async (sql : Sql) => {
-    return await sql`SELECT * from user_favorite`;
+export const queryUserFavorite = async (sql : Sql, userID : number) => {
+    return await sql`SELECT * from user_favorite WHERE user_id = ${userID}`;
 };
 
-export const queryUserGame = async (sql : Sql) => {
-    return await sql`SELECT * from user_game`;
+export const queryUserGame = async (sql : Sql, userID : number) => {
+    return await sql`SELECT * from user_game WHERE user_id = ${userID}`;
 };
 
-export const queryReview = async (sql : Sql) => {
-    return await sql`SELECT * from user_game_review`;
+export const queryUserReview = async (sql : Sql, userID : number) => {
+    return await sql`SELECT * from user_game_review WHERE user_id = ${userID}`;
 };
 
 
