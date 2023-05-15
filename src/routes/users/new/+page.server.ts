@@ -23,5 +23,6 @@ export const actions = {
 
     // create user
     await insertUser(locals.sql, username);
+
   }
 } satisfies Actions<void | ActionFailure<FormErrorData>>;
