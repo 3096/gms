@@ -1,23 +1,27 @@
 <script lang="ts">
-  import { Table } from '@skeletonlabs/skeleton';
+  import { Table, tableMapperValues } from '@skeletonlabs/skeleton';
   import type { TableSource } from '@skeletonlabs/skeleton';
 
-  const game = {
-    id: 1,
-    name: 'Xenoblade Chronicles 3',
-    release_date: '2022-07-29',
-    website: 'https://www.nintendo.co.jp/switch/az3ha/',
-    description:
-      'Join Noah and Mio, members of the two opposing nations of Keves and Agnus, on a heartfelt journey through a warring world with a dark secret. Traverse massive, fantastical landscapes and master seamless real-time RPG combat as you expose the true enemy pulling the strings.',
-    franchise: 'Xenoblade Chronicles',
-    platform: 'Nintendo Switch',
-    genre: 'Action, JRPG'
-  };
+  export let data;
+  console.log(data);
+
+  const game = data.gameData;
 
   const producer: TableSource = {
+    // publishers and developers
     head: ['Producers'],
-    body: [['Nintendo'], ['Monolith Soft']] // publishers and developers
+    body: tableMapperValues(data.producers, ['name'])
   };
+
+  // const publisher: TableSource = {
+  //   head: ['Publishers'],
+  //   body: [['Nintendo'], ['Monolith Soft']] // publishers
+  // };
+
+  // const developer: TableSource = {
+  //   head: ['Developers'],
+  //   body: [['Nintendo'], ['Monolith Soft']] // developers
+  // };
 
   const platform: TableSource = {
     head: ['Platforms'],
@@ -31,7 +35,7 @@
 
   const dlc: TableSource = {
     head: ['DLC', 'Description'],
-    body: [['Expansion Pass', 'The Xenoblade Chronicles 3 Expansion Pass includes access to multiple waves of DLC content.']]
+    body: tableMapperValues(data.dlc, ['name','description'])
   };
 </script>
 
@@ -62,4 +66,7 @@
   <Table source={dlc} class="px-8 pb-8" />
 
   <Table source={producer} class="px-8 pb-8" />
+  <!-- <Table source={publisher} class="px-8 pb-8" /> -->
+
+  <!-- <Table source={developer} class="px-8 pb-8" /> -->
 </div>

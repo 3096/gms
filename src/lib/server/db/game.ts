@@ -147,24 +147,48 @@ export const queryGame = async (sql: Sql) => {
     return await sql`SELECT * FROM game`;
 };
 
-export const queryPublisher = async (sql: Sql) => {
-    return await sql`SELECT * FROM publisher`;
+export const queryGameByID = async (sql : Sql, gameID : number) => {
+    const [game] = await sql`SELECT * FROM game WHERE game_id = ${gameID}`;
+    return game;
+};
+
+export const queryPublisher = async (sql: Sql, gameID : number) => {
+    return await sql`SELECT * FROM 
+    publisher INNER JOIN publishmentship 
+    ON publisher.publisher_id = publishmentship.publisher_id AND publishmentship.game_id = ${gameID}`;
 };
 
 export const queryPublishmentship = async (sql: Sql) => {
     return await sql`SELECT * FROM publishmentship`;
 };
 
-export const queryDeveloper = async (sql: Sql) => {
-    return await sql`SELECT * FROM developer`;
+export const queryDeveloper = async (sql: Sql, gameID : number) => {
+    return await sql`SELECT * FROM 
+    developer INNER JOIN developmentship 
+    ON developer.developer_id = developmentship.developer_id AND developmentship.game_id = ${gameID}`;
 };
 
 export const queryDevelopmentship = async (sql: Sql) => {
     return await sql`SELECT * FROM developmentship`;
 };
+
+export const queryProducer = async (sql : Sql, gameID : number) => {
+    return await sql`SELECT name FROM 
+    publisher INNER JOIN publishmentship 
+    ON publisher.publisher_id = publishmentship.publisher_id AND publishmentship.game_id = ${gameID}
+    UNION
+    SELECT name FROM 
+    developer INNER JOIN developmentship 
+    ON developer.developer_id = developmentship.developer_id AND developmentship.game_id = ${gameID}
+    `;
+};
   
 export const queryDLC = async (sql: Sql) => {
     return await sql`SELECT * FROM dlc`;
+};
+
+export const queryGameDLC = async (sql: Sql, gameID : number) => {
+    return await sql`SELECT * FROM dlc WHERE game_id = ${gameID}`;
 };
 
 
