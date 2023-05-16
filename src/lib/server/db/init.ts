@@ -1,8 +1,9 @@
 import { dev } from '$app/environment';
 import pg, { PostgresError } from 'postgres';
 import { createUserTable } from './user';
-import { createGame, insertGame } from './game';
+import { createGame } from './game';
 import { createUserGameRelation } from './user_game';
+import { testDB } from './initData';
 
 export const initDb = async () => {
 
@@ -32,6 +33,8 @@ export const initDb = async () => {
   await createUserTable(sql);
   await createGame(sql);
   await createUserGameRelation(sql);
+
+  testDB(sql);
 
   return sql;
 };
