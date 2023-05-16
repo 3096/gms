@@ -4,8 +4,8 @@ export const testDB = async (sql: Sql) => {
   await sql`INSERT INTO game
     (game_id, name, release_date, website, description, franchise, platform, genre)
     VALUES
-    (1, 'Xenoblade Chronicles 3', '2022-07-29', 'https://www.nintendo.co.jp/switch/az3ha', 'xeno game', 'Xenoblade Chronicles', 'Nintendo Switch', 'Action, JRPG'),
-    (2, 'Rocket League', '2015-07-07', 'https://www.rocketleague.com/', 'car game', 'Rocket League', 'PC, PS4, Xbox One, Nintendo Switch', 'Sports, Driving');
+    (1, 'Xenoblade Chronicles 3', '2022-07-29', 'https://www.nintendo.co.jp/switch/az3ha', 'Join Noah and Mio, members of the two opposing nations of Keves and Agnus, on a heartfelt journey through a warring world with a dark secret. Traverse massive, fantastical landscapes and master seamless real-time RPG combat as you expose the true enemy pulling the strings.', 'Xenoblade Chronicles', 'Nintendo Switch', 'Action, JRPG'),
+    (2, 'Rocket League', '2015-07-07', 'https://www.rocketleague.com/', 'Rocket League is a high-powered hybrid of arcade-style soccer and vehicular mayhem with easy-to-understand controls and fluid, physics-driven competition.', 'Rocket League', 'PC, PS4, Xbox One, Nintendo Switch', 'Sports, Driving');
   `;
   await sql`INSERT INTO publisher
     (publisher_id, name, website)
@@ -35,8 +35,8 @@ export const testDB = async (sql: Sql) => {
     INSERT INTO dlc
         (dlc_id, game_id, name, release_date, description)
     VALUES
-        (1, 1, 'Expansion Pass', '2022-07-29', '4 waves'),
-    (2, 2, 'Season 10 Veteran Pack', '2023-04-26', '6 items');
+        (1, 1, 'Expansion Pass', '2022-07-29', 'The Xenoblade Chronicles 3 Expansion Pass includes access to multiple waves of DLC content.'),
+    (2, 2, 'Season 10 Veteran Pack', '2023-04-26', 'Reach the stars with this sky-flying drift car! Pick up the Sky Blue Takumi RXT Car and the perfectly paired Black Hiro Wheels.');
   `;
 
   await sql`INSERT INTO "user"
