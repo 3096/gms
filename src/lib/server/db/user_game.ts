@@ -80,7 +80,7 @@ const createFavoriteTable = async (sql: Sql) => {
 
 // QUERY
 export const queryUserFavorite = async (sql : Sql, userID : number) => {
-    return await sql`SELECT * from user_favorite WHERE user_id = ${userID}`;
+    return await sql`SELECT user_favorite.*, game.name FROM user_favorite INNER JOIN game ON user_favorite.game_id = game.game_id WHERE user_id = ${userID}`;
 };
 
 export const queryUserGame = async (sql : Sql, userID : number) => {
@@ -88,7 +88,17 @@ export const queryUserGame = async (sql : Sql, userID : number) => {
 };
 
 export const queryUserReview = async (sql : Sql, userID : number) => {
-    return await sql`SELECT * from user_game_review WHERE user_id = ${userID}`;
+    return await sql`SELECT user_game_review.*, game.name FROM user_game_review INNER JOIN game ON user_game_review.game_id = game.game_id WHERE user_id = ${userID}`;
+};
+
+export const queryTotalHours = async (sql : Sql, userID : number) => {
+  const [sum] = await sql`SELECT SUM(hours_played) from user_game WHERE user_id = ${userID}`;
+  return sum;
+};
+
+export const queryTotalMoney = async (sql : Sql, userID : number) => {
+  const [sum] = await sql`SELECT SUM(money_spent) from user_game WHERE user_id = ${userID}`;
+  return sum;
 };
 
 

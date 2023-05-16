@@ -1,38 +1,36 @@
 <script lang="ts">
-  import { Table } from '@skeletonlabs/skeleton';
+  import { Table, tableMapperValues, tableSourceMapper, tableSourceValues } from '@skeletonlabs/skeleton';
   import type { TableSource } from '@skeletonlabs/skeleton';
   import Header from '$lib/components/headers/Header.svelte';
 
   export let data;
 
   const user = data.userData;
+  if (user == undefined) process.exit();
+
+  console.log(data);
 
   const userName = user.username;
 
   const userTotalHoursPlayed: TableSource = {
     head: ['Total Hours Played'],
-    body: [['2062']]
+    body: tableMapperValues([data.hourSum], ['sum'])
   };
 
   const userTotalMoneySpent: TableSource = {
     head: ['Total Money Spent'],
-    body: [['$86.86']]
+    body: tableMapperValues([data.moneySum], ['sum'])
   };
 
+  // TODO fix the id placeholder; add join
   const userFavorites: TableSource = {
     head: ['Game', 'Hours Played', 'Money Spent'],
-    body: [
-      ['Xenoblade Chronicles 2', '62', '$59.99'],
-      ['Rocket League', '2000', '$26.87']
-    ]
+    body: tableMapperValues(data.favList, ['name','user_id','game_id'])
   };
 
   const userGameReviews: TableSource = {
     head: ['Game', 'Review', 'Rating'],
-    body: [
-      ['Xenoblade Chronicles 2', 'idk', '8/10'],
-      ['Rocket League', 'fun', '8/10']
-    ]
+    body: tableMapperValues(data.reviews, ['name','review','rating'])
   };
 </script>
 
