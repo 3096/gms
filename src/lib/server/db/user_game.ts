@@ -80,7 +80,10 @@ const createFavoriteTable = async (sql: Sql) => {
 
 // QUERY
 export const queryUserFavorite = async (sql : Sql, userID : number) => {
-    return await sql`SELECT user_favorite.*, game.name FROM user_favorite INNER JOIN game ON user_favorite.game_id = game.game_id WHERE user_id = ${userID}`;
+    return await sql`SELECT user_favorite.*, game.name, user_game.hours_played, user_game.money_spent 
+    FROM user_favorite LEFT JOIN user_game 
+    ON user_game.user_id = user_favorite.user_id AND user_game.game_id = user_favorite.game_id 
+    INNER JOIN game ON user_favorite.game_id = game.game_id WHERE user_favorite.user_id = ${userID}`;
 };
 
 export const queryUserGame = async (sql : Sql, userID : number) => {

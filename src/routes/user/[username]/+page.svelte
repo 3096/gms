@@ -22,10 +22,9 @@
     body: tableMapperValues([data.moneySum], ['sum'])
   };
 
-  // TODO fix the id placeholder; add join
   const userFavorites: TableSource = {
     head: ['Game', 'Hours Played', 'Money Spent'],
-    body: tableMapperValues(data.favList, ['name','user_id','game_id'])
+    body: tableMapperValues(data.favList, ['name','hours_played','money_spent'])
   };
 
   const userGameReviews: TableSource = {
