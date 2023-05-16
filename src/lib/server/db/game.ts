@@ -140,7 +140,7 @@ export const queryGameByID = async (sql: Sql, gameID: number) => {
   return game;
 };
 
-export const queryPublisher = async (sql: Sql, gameID: number) => {
+export const queryGamePublisher = async (sql: Sql, gameID: number) => {
   return await sql`SELECT * FROM 
     publisher INNER JOIN publishmentship 
     ON publisher.publisher_id = publishmentship.publisher_id AND publishmentship.game_id = ${gameID}`;
@@ -150,10 +150,18 @@ export const queryPublishmentship = async (sql: Sql) => {
   return await sql`SELECT * FROM publishmentship`;
 };
 
-export const queryDeveloper = async (sql: Sql, gameID: number) => {
+export const queryGameDeveloper = async (sql: Sql, gameID: number) => {
   return await sql`SELECT * FROM 
     developer INNER JOIN developmentship 
     ON developer.developer_id = developmentship.developer_id AND developmentship.game_id = ${gameID}`;
+};
+
+export const queryDeveloperByName = async (sql: Sql, developerName: string) => {
+  return await sql`SELECT developer_id FROM developer WHERE name = ${developerName}`;
+};
+
+export const queryPublisherByName = async (sql: Sql, publisherName: string) => {
+  return await sql`SELECT publisher_id FROM publisher WHERE name = ${publisherName}`;
 };
 
 export const queryDevelopmentship = async (sql: Sql) => {
@@ -183,18 +191,18 @@ export const queryGameDLC = async (sql: Sql, gameID: number) => {
 export const insertGame = async (
   sql: Sql,
   name: string,
-  release_date: string,
-  website: string,
-  description: string,
-  franchise: string,
-  platform: string,
-  genre: string
+  release_date: string | null,
+  website: string | null,
+  description: string | null,
+  franchise: string | null,
+  platform: string | null,
+  genre: string | null
 ) => {
   await sql`INSERT INTO game (name, release_date, website, description, franchise, platform, genre) VALUES (${name}, ${release_date}, ${website}, ${description}, ${franchise}, ${platform}, ${genre});`;
 };
 
-export const insertPublisher = async (sql: Sql, name: string, website: string) => {
-  await sql`INSERT INTO publisher (name, website) VALUES (${name}, ${website});`;
+export const insertPublisher = async (sql: Sql, name: string) => {
+  await sql`INSERT INTO publisher (name) VALUES (${name});`;
 };
 
 export const insertPublishmentship = async (sql: Sql, game_id: number, publisher_id: number) => {

@@ -1,4 +1,5 @@
 <script>
+  import { goto } from '$app/navigation';
   import ValidForm from '$lib/components/forms/ValidForm.svelte';
   import ValidInput from '$lib/components/forms/ValidInput.svelte';
   import { formSchema } from './form';
@@ -6,7 +7,12 @@
 
 <div class="container mx-auto p-6">
   <h1 class="h1 my-6 font-bold w-full text-center">Add New Game</h1>
-  <ValidForm class="w-full max-w-lg mx-auto" submitText="Add Game" {formSchema}>
+  <ValidForm
+    class="w-full max-w-lg mx-auto"
+    submitText="Add Game"
+    {formSchema}
+    onSuccess={() => goto('/games')}
+  >
     <div class="flex flex-wrap -mx-3 mb-6">
       <div class="w-full px-3">
         <ValidInput
