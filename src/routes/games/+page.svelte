@@ -1,13 +1,11 @@
 <script lang="ts">
   import { focusTrap } from '@skeletonlabs/skeleton';
-  
+
   export let data;
-  
+
   let isFocused: boolean = true;
 
-  function test(){
-    console.log("bruh");
-  }
+  let filterInput = '';
 </script>
 
 <div>

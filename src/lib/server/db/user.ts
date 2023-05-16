@@ -2,7 +2,6 @@ import type { Sql } from 'postgres';
 
 // CREATE TABLES
 export const createUserTable = async (sql: Sql) => {
-  
   await sql`DROP TABLE IF EXISTS "user";`;
 
   await sql`
@@ -27,4 +26,3 @@ export const queryUserByUsername = async (sql: Sql, username: string) => {
 export const insertUser = async (sql: Sql, username: string) => {
   await sql`INSERT INTO "user" (username) VALUES (${username})`;
 };
-

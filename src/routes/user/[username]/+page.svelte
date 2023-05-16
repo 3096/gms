@@ -1,5 +1,10 @@
 <script lang="ts">
-  import { Table, tableMapperValues, tableSourceMapper, tableSourceValues } from '@skeletonlabs/skeleton';
+  import {
+    Table,
+    tableMapperValues,
+    tableSourceMapper,
+    tableSourceValues
+  } from '@skeletonlabs/skeleton';
   import type { TableSource } from '@skeletonlabs/skeleton';
   import Header from '$lib/components/headers/Header.svelte';
 
@@ -24,12 +29,12 @@
 
   const userFavorites: TableSource = {
     head: ['Game', 'Hours Played', 'Money Spent'],
-    body: tableMapperValues(data.favList, ['name','hours_played','money_spent'])
+    body: tableMapperValues(data.favList, ['name', 'hours_played', 'money_spent'])
   };
 
   const userGameReviews: TableSource = {
     head: ['Game', 'Review', 'Rating'],
-    body: tableMapperValues(data.reviews, ['name','review','rating'])
+    body: tableMapperValues(data.reviews, ['name', 'review', 'rating'])
   };
 </script>
 
@@ -40,15 +45,15 @@
     </div>
   </div>
 
-  <Header text='Overall Statistics' />
+  <Header text="Overall Statistics" />
   <div class="flex px-4 pb-8">
     <Table source={userTotalHoursPlayed} class="px-4" />
     <Table source={userTotalMoneySpent} class="px-4" />
   </div>
 
-  <Header text='Favorites' />
+  <Header text="Favorites" />
   <Table source={userFavorites} class="px-8 pb-8" />
 
-  <Header text='Reviews' />
+  <Header text="Reviews" />
   <Table source={userGameReviews} class="px-8 pb-8" />
 </div>

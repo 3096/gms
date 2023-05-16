@@ -1,4 +1,4 @@
-import { queryAllGames } from "$lib/server/db/game";
+import { queryAllGames } from '$lib/server/db/game';
 
 export async function load({locals}) {
         
