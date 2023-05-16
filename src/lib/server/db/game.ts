@@ -82,15 +82,15 @@ const createDLCTable = async (sql: Sql) => {
  * Set up foreign key relationships
  */
 const makeFK = async (sql: Sql) => {
-  sql`ALTER TABLE publishmentship ADD CONSTRAINT publishment_gameID FOREIGN KEY (game_id) REFERENCES game(game_id);`;
+  await sql`ALTER TABLE publishmentship ADD CONSTRAINT publishment_gameID FOREIGN KEY (game_id) REFERENCES game(game_id);`;
 
-  sql`ALTER TABLE publishmentship ADD CONSTRAINT publishment_publisherID FOREIGN KEY (publisher_id) REFERENCES publisher(publisher_id);`;
+  await sql`ALTER TABLE publishmentship ADD CONSTRAINT publishment_publisherID FOREIGN KEY (publisher_id) REFERENCES publisher(publisher_id);`;
 
-  sql`ALTER TABLE developmentship ADD CONSTRAINT development_gameID FOREIGN KEY (game_id) REFERENCES game(game_id);`;
+  await sql`ALTER TABLE developmentship ADD CONSTRAINT development_gameID FOREIGN KEY (game_id) REFERENCES game(game_id);`;
 
-  sql`ALTER TABLE developmentship ADD CONSTRAINT development_developerID FOREIGN KEY (developer_id) REFERENCES developer(developer_id);`;
+  await sql`ALTER TABLE developmentship ADD CONSTRAINT development_developerID FOREIGN KEY (developer_id) REFERENCES developer(developer_id);`;
 
-  sql`ALTER TABLE dlc ADD CONSTRAINT dlc_gameID FOREIGN KEY (game_id) REFERENCES game(game_id)`;
+  await sql`ALTER TABLE dlc ADD CONSTRAINT dlc_gameID FOREIGN KEY (game_id) REFERENCES game(game_id)`;
 };
 // ===================== END TABLE DEFINITION =====================
 

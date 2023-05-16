@@ -13,10 +13,9 @@
     <div />
     <h1 class="h1 flex justify-center items-center"><b>List of Games</b></h1>
 
-    <!-- <form class="justify-self-end" use:focusTrap={isFocused}>
-      <input type="text" class="w-[400px] input" placeholder="Search..." />
-      <button class="btn variant-filled-primary">➤</button>
-    </form> -->
+    <div class="justify-self-end flex w-full" use:focusTrap={isFocused}>
+      <input type="text" class="grow input mr-2" placeholder="Filter..." bind:value={filterInput} />
+    </div>
   </div>
 
   <div class="px-8 pb-8 table-container">
@@ -31,7 +30,9 @@
       </thead>
 
       <tbody>
-        {#each data.gameSourceData as game}
+        {#each data.gameSourceData.filter((game) => game.name
+            .toLowerCase()
+            .includes(filterInput.toLowerCase())) as game}
           <tr>
             <td><a href="/game/{game.game_id}">{game.name}</a></td>
             <td>{game.release_date}</td>

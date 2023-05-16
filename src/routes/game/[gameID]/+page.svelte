@@ -1,8 +1,9 @@
 <script lang="ts">
   import { Table, tableMapperValues } from '@skeletonlabs/skeleton';
   import type { TableSource } from '@skeletonlabs/skeleton';
+  import type { PageData } from './$types';
 
-  export let data;
+  export let data: PageData;
   console.log(data);
 
   const game = data.gameData;
@@ -25,7 +26,7 @@
 
   const dlc: TableSource = {
     head: ['DLC', 'Description'],
-    body: tableMapperValues(data.dlc, ['name','description'])
+    body: tableMapperValues(data.dlc, ['name', 'description'])
   };
 </script>
 

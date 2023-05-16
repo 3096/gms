@@ -33,7 +33,7 @@ export const initDb = async () => {
   await createGame(sql);
   await createUserGameRelation(sql);
 
-  testDB(sql);
+  await testDB(sql);
 
   return sql;
 };
