@@ -10,12 +10,13 @@
 
 <div>
   <div class="p-8 grid grid-cols-3">
-    <div />
-    <h1 class="h1 flex justify-center items-center"><b>List of Games</b></h1>
-
     <div class="justify-self-end flex w-full" use:focusTrap={isFocused}>
       <input type="text" class="grow input mr-2" placeholder="Filter..." bind:value={filterInput} />
     </div>
+    <h1 class="h1 flex justify-center items-center"><b>List of Games</b></h1>
+    <button class="btn variant-filled-primary justify-self-end">
+      <a href="/games/new">Add Game</a>
+    </button>
   </div>
 
   <div class="px-8 pb-8 table-container">

@@ -5,7 +5,7 @@
 
   export let name: string;
   export let label: string;
-  export let elementType: 'input' | 'select' = 'input';
+  export let elementType: 'input' | 'select' | 'textarea' = 'input';
   export let value = '';
 
   type T = $$Generic<z.ZodRawShape>;
@@ -68,6 +68,17 @@
         </select>
       {:else if elementType === 'input'}
         <input
+          {name}
+          class={($$restProps.class ?? 'w-full transition duration-200 ease-in-out') +
+            ' input input-bordered'}
+          class:input-error={showError}
+          {...$$restProps}
+          bind:value
+          on:input={onInput}
+          on:blur={onBlur}
+        />
+      {:else if elementType === 'textarea'}
+        <textarea
           {name}
           class={($$restProps.class ?? 'w-full transition duration-200 ease-in-out') +
             ' input input-bordered'}

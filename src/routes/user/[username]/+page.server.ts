@@ -5,11 +5,17 @@ import {
   queryUserFavorite,
   queryUserReview
 } from '$lib/server/db/user_game.js';
+import { error } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
 
-export async function load({ locals, params }) {
+export const load = (async ({ locals, params }) => {
   const sql = locals.sql;
 
   const userData = await queryUserByUsername(sql, params.username);
+  if (!userData) {
+    throw error(404, { message: 'User not found' });
+  }
+
   const userID = userData.id;
 
   return {
@@ -21,4 +27,4 @@ export async function load({ locals, params }) {
 
     reviews: queryUserReview(sql, userID)
   };
-}
+}) satisfies PageServerLoad;

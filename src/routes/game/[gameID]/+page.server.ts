@@ -1,6 +1,7 @@
+import type { PageServerLoad } from './$types';
 import { queryGameByID, queryGameDLC, queryProducer } from '$lib/server/db/game.js';
 
-export async function load({ locals, params }) {
+export const load = (async ({ locals, params }) => {
   const sql = locals.sql;
   const gameID = parseInt(params.gameID);
 
@@ -9,4 +10,4 @@ export async function load({ locals, params }) {
     producers: queryProducer(sql, gameID),
     dlc: queryGameDLC(sql, gameID)
   };
-}
+}) satisfies PageServerLoad;
