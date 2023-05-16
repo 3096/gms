@@ -1,8 +1,7 @@
-import { queryAllGames } from "$lib/server/db/game";
+import { queryAllGames } from '$lib/server/db/game';
 
-export async function load({locals}) {
-
-    /*    
+export async function load({ locals }) {
+  /*    
         await sql`    INSERT INTO game
         (game_id, name, release_date, website, description, franchise, platform, genre)
         VALUES
@@ -61,8 +60,8 @@ export async function load({locals}) {
     (1, 1, 2, 8, 'fun'),
     (2, 1, 1, 8, 'idk');`;
 */
-        
-    return {
-        gameSourceData: await queryAllGames(locals.sql)
-    };
+
+  return {
+    gameSourceData: await queryAllGames(locals.sql)
+  };
 }
