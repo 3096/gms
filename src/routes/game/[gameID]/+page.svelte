@@ -13,16 +13,6 @@
     body: tableMapperValues(data.producers, ['name'])
   };
 
-  // const publisher: TableSource = {
-  //   head: ['Publishers'],
-  //   body: [['Nintendo'], ['Monolith Soft']] // publishers
-  // };
-
-  // const developer: TableSource = {
-  //   head: ['Developers'],
-  //   body: [['Nintendo'], ['Monolith Soft']] // developers
-  // };
-
   const platform: TableSource = {
     head: ['Platforms'],
     body: [[game.platform]]
@@ -66,7 +56,4 @@
   <Table source={dlc} class="px-8 pb-8" />
 
   <Table source={producer} class="px-8 pb-8" />
-  <!-- <Table source={publisher} class="px-8 pb-8" /> -->
-
-  <!-- <Table source={developer} class="px-8 pb-8" /> -->
 </div>
