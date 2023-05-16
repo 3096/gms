@@ -4,6 +4,10 @@
   export let data;
   
   let isFocused: boolean = true;
+
+  function test(){
+    console.log("bruh");
+  }
 </script>
 
 <div>
@@ -11,10 +15,10 @@
     <div />
     <h1 class="h1 flex justify-center items-center"><b>List of Games</b></h1>
 
-    <form class="justify-self-end" use:focusTrap={isFocused}>
+    <!-- <form class="justify-self-end" use:focusTrap={isFocused}>
       <input type="text" class="w-[400px] input" placeholder="Search..." />
       <button class="btn variant-filled-primary">➤</button>
-    </form>
+    </form> -->
   </div>
 
   <div class="px-8 pb-8 table-container">
@@ -31,7 +35,7 @@
       <tbody>
         {#each data.gameSourceData as game}
           <tr>
-            <td>{game.name}</td>
+            <td><a href="/game/{game.game_id}">{game.name}</a></td>
             <td>{game.release_date}</td>
             <td>{game.platform}</td>
             <td>{game.genre}</td>
