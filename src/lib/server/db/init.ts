@@ -1,5 +1,5 @@
 import { dev } from '$app/environment';
-import pg, { PostgresError } from 'postgres';
+import pg from 'postgres';
 import { createUserTable } from './user';
 import { createGame } from './game';
 import { createUserGameRelation } from './user_game';
@@ -17,15 +17,13 @@ export const initDb = async () => {
     // }
     // console.log("here");
   } catch (e) {
-    if (e instanceof PostgresError && e.code === '3D000') {
+    if (e.code === '3D000') {
       await pg(
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         `postgres://${sql.options.user}:${sql.options.pass!}@${sql.options.host[0]}:${
           sql.options.port[0]
         }/postgres`
       ).unsafe(`CREATE DATABASE ${sql.options.database}`);
-    } else {
-      throw e;
     }
   }
 
