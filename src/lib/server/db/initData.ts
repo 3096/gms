@@ -39,7 +39,7 @@ await sql`INSERT INTO "user"
 VALUES
 (1, 'dvdsng'),
 (2, '3096'),
-(3, 'Azlothe');`;
+(3, 'azlothe');`;
 await sql` INSERT INTO user_favorite
 (user_id, game_id)
 VALUES
